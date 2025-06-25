@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(7, 1fr);
-    gap: 10px;
+    gap: 5px;
     justify-items: center;
     text-align: center;
 }
@@ -15,8 +15,8 @@
 .parent div {
     background-color: #bb9367;
     border-radius: 5px;
-    width: 8vw;
-    height: 60px;
+    width: 12vw;
+    height: 30px;
     text-align: center;
-    font-size: 25px;
+    font-size: 10px;
 }
