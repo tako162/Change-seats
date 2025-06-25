@@ -150,7 +150,7 @@ function drawNextMemberWithRandomHighlight(callback) {
                 flashCycle = 0;
             }
         } else {
-            if (currentSeat) currentSeat.style.backgroundColor = '#ffc96b';
+            if (currentSeat) currentSeat.style.backgroundColor = '#999999';
             isHighlightOn = true;
         }
 
