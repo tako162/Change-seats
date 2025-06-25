@@ -132,7 +132,7 @@ function drawNextMemberWithRandomHighlight(callback) {
             const result = drawNextMember();
             const target = document.querySelector(`.div${result.seat}`);
             if (target) {
-                target.style.backgroundColor = '#bfa06a';
+                target.style.backgroundColor = '#999999';
             }
             if (callback) callback();
             return;
@@ -150,7 +150,7 @@ function drawNextMemberWithRandomHighlight(callback) {
                 flashCycle = 0;
             }
         } else {
-            if (currentSeat) currentSeat.style.backgroundColor = '#999999';
+            if (currentSeat) currentSeat.style.backgroundColor = '#ffc96b';
             isHighlightOn = true;
         }
 
