@@ -86,9 +86,6 @@ function drawNextMember() {
         sixthSeat = seat;
     }
 
+    document.getElementById("resultText").innerText = `${drawCount}回目:${seat}`;
     return { member, seat };
 }
-
-drawNextMember();
-
-console.log("\n🎉 最終席割り結果:");
