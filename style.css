@@ -55,13 +55,29 @@ body {
     transition: background-color 0.3s ease;
 }
 
-
-
-
 .drawButton:hover {
     background-color: #ffd700;
 }
 
+.resetButton {
+    margin: 0 auto;
+
+    width: 10vw;
+    height: 15px;
+    font-size: 5px;
+    font-weight: bold;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid #323232;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.resetButton:hover {
+    background-color: #ff4000;
+}
 
 footer {
     font-size: 10px;
