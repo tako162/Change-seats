@@ -1,24 +1,17 @@
 const allMemberCount = 37;
-const priorityMembers = [6, 10];
-const defaultProbability = 80;
+const priorityMembers = [6, 10]; // 抽選回数6回目、10回目で優先抽選
+const probabilities = 70; // 優先抽選の確率（％）
 
 let drawCount = 0;
-const usedSeats = [];
-const seatAssignments = {};
+const usedSeats = [];    // 使われた席番号
+const seatAssignments = {}; // { member: seat }
 
 const priorityWishes = {
-    6: [
-        { seat: 30, probability: 30 },
-        { seat: 25, probability: 70 },
-        { seat: 19, probability: 30 }
-    ],
-    10: [
-        { seat: 8, probability: 60 },
-        { seat: 9, probability: 30 }
-    ]
+    6: [25, 19, 29],  // 6回目の希望席（複数）
+    10: [31, 13, 25, 23]// 10回目の希望席（使われるのは隣席が空いていない場合）
 };
 
-let sixthSeat = null;
+let sixthSeat = null; // 6回目の席を記録
 
 function isUsedSeat(seat) {
     return usedSeats.includes(seat);
@@ -37,24 +30,14 @@ function getHorizontalNeighbors(seat) {
     const rowEnd = rowStart + 5;
     const neighbors = [];
 
-    if (seat - 1 >= rowStart && !isUsedSeat(seat - 1)) {
-        neighbors.push(seat - 1);
-    }
     if (seat + 1 <= rowEnd && !isUsedSeat(seat + 1)) {
         neighbors.push(seat + 1);
     }
+    if (seat - 1 >= rowStart && !isUsedSeat(seat - 1)) {
+        neighbors.push(seat - 1);
+    }
 
     return neighbors;
-}
-
-function chooseSeatByProbability(seatOptions) {
-    const available = seatOptions.filter(opt => !isUsedSeat(opt.seat));
-    for (const opt of available) {
-        if (Math.random() * 100 < opt.probability) {
-            return opt.seat;
-        }
-    }
-    return null;
 }
 
 function drawNextMember() {
@@ -65,38 +48,42 @@ function drawNextMember() {
 
     drawCount++;
     const member = drawCount;
+
     let seat = null;
 
-    // 6回目: 希望席を個別確率で選ぶ
-    if (drawCount === 6) {
-        const wishedOptions = priorityWishes[6] || [];
-        seat = chooseSeatByProbability(wishedOptions);
-        if (seat !== null) {
+    // 6回目：複数希望席のうち空いているものから優先
+    if (drawCount === 6 && Math.random() * 100 < probabilities) {
+        const wishedSeats = priorityWishes[6] || [];
+        const availableWished = wishedSeats.filter(seat => !isUsedSeat(seat));
+        if (availableWished.length > 0) {
+            seat = availableWished[Math.floor(Math.random() * availableWished.length)];
             sixthSeat = seat;
             console.log(`🎯 6回目: メンバー${member}が希望席${seat}に当選！`);
         }
     }
 
-    // 10回目: 6回目の横席優先 → だめなら希望席
-    else if (drawCount === 10) {
-        if (sixthSeat !== null && Math.random() * 100 < defaultProbability) {
+    // 10回目：6回目の横の空席が優先
+    else if (drawCount === 10 && Math.random() * 100 < probabilities) {
+        if (sixthSeat !== null) {
             const neighbors = getHorizontalNeighbors(sixthSeat);
             if (neighbors.length > 0) {
                 seat = neighbors[Math.floor(Math.random() * neighbors.length)];
-                console.log(`👥 10回目: メンバー${member}が6回目の隣席${seat}に決定！`);
+                console.log(`👥 10回目: メンバー${member}が6回目の人の隣席${seat}に決定！`);
             }
         }
 
+        // 横が全部埋まっていたら希望席候補を試す
         if (seat === null) {
-            const wishedOptions = priorityWishes[10] || [];
-            seat = chooseSeatByProbability(wishedOptions);
-            if (seat !== null) {
-                console.log(`⭐️ 10回目: メンバー${member}が希望席${seat}に当選（隣席NG時）`);
+            const wishedSeats = priorityWishes[10] || [];
+            const availableWished = wishedSeats.filter(seat => !isUsedSeat(seat));
+            if (availableWished.length > 0) {
+                seat = availableWished[Math.floor(Math.random() * availableWished.length)];
+                console.log(`⭐️ 10回目: メンバー${member}が希望席${seat}に当選（隣席空いてなかったため）`);
             }
         }
     }
 
-    // 通常席ランダム
+    // 通常抽選
     if (seat === null) {
         seat = getRandomSeat();
         console.log(`🎲 ${drawCount}回目: メンバー${member}がランダム席${seat}に決定`);
@@ -109,6 +96,10 @@ function drawNextMember() {
         sixthSeat = seat;
     }
 
+    document.getElementsByClassName("div" + seat)[0].innerText = `${member}`;
+    document.getElementById("resultText").innerText = `${drawCount}回目:${seat}`;
+
     document.getElementById("resultText").innerText = `${drawCount}回目: メンバー${member} → 席${seat}`;
     return { member, seat };
+
 }
