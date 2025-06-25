@@ -1,25 +1,29 @@
 const allMemberCount = 37;
-const priorityMembers = [6, 10]; // 抽選回数6回目、10回目で優先抽選
-const probabilities = 80; // 優先抽選の確率（％）
+const priorityMembers = [6, 10];
+const defaultProbability = 80;
 
 let drawCount = 0;
-const usedSeats = [];    // 使われた席番号
-const seatAssignments = {}; // { member: seat }
+const usedSeats = [];
+const seatAssignments = {};
 
-// 希望席（回数ベース）
 const priorityWishes = {
-    6: 25,  // 6回目の希望席
-    10: 8   // 10回目の希望席（ただし隣席優先で使わないかも）
+    6: [
+        { seat: 30, probability: 30 },
+        { seat: 25, probability: 70 },
+        { seat: 19, probability: 30 }
+    ],
+    10: [
+        { seat: 8, probability: 60 },
+        { seat: 9, probability: 30 }
+    ]
 };
 
-let sixthSeat = null; // 6回目の席を記録
+let sixthSeat = null;
 
-// 席が使われているか判定
 function isUsedSeat(seat) {
     return usedSeats.includes(seat);
 }
 
-// 空いている席をランダムで取得
 function getRandomSeat() {
     let seat;
     do {
@@ -28,7 +32,6 @@ function getRandomSeat() {
     return seat;
 }
 
-// 1列6席の横の隣席（空席のみ）
 function getHorizontalNeighbors(seat) {
     const rowStart = Math.floor((seat - 1) / 6) * 6 + 1;
     const rowEnd = rowStart + 5;
@@ -44,6 +47,16 @@ function getHorizontalNeighbors(seat) {
     return neighbors;
 }
 
+function chooseSeatByProbability(seatOptions) {
+    const available = seatOptions.filter(opt => !isUsedSeat(opt.seat));
+    for (const opt of available) {
+        if (Math.random() * 100 < opt.probability) {
+            return opt.seat;
+        }
+    }
+    return null;
+}
+
 function drawNextMember() {
     if (drawCount >= allMemberCount) {
         console.log("全員抽選済みです！");
@@ -51,28 +64,39 @@ function drawNextMember() {
     }
 
     drawCount++;
-    const member = drawCount; // メンバーは順番（1〜37）
-
+    const member = drawCount;
     let seat = null;
 
-    if (drawCount === 6 && Math.random() * 100 < probabilities) {
-        const wishedSeat = priorityWishes[6];
-        if (wishedSeat && !isUsedSeat(wishedSeat)) {
-            seat = wishedSeat;
+    // 6回目: 希望席を個別確率で選ぶ
+    if (drawCount === 6) {
+        const wishedOptions = priorityWishes[6] || [];
+        seat = chooseSeatByProbability(wishedOptions);
+        if (seat !== null) {
             sixthSeat = seat;
             console.log(`🎯 6回目: メンバー${member}が希望席${seat}に当選！`);
         }
     }
-    else if (drawCount === 10 && Math.random() * 100 < probabilities) {
-        if (sixthSeat !== null) {
-            const candidates = getHorizontalNeighbors(sixthSeat);
-            if (candidates.length > 0) {
-                seat = candidates[Math.floor(Math.random() * candidates.length)];
-                console.log(`👥 10回目: メンバー${member}が6回目の人の隣席${seat}に決定！`);
+
+    // 10回目: 6回目の横席優先 → だめなら希望席
+    else if (drawCount === 10) {
+        if (sixthSeat !== null && Math.random() * 100 < defaultProbability) {
+            const neighbors = getHorizontalNeighbors(sixthSeat);
+            if (neighbors.length > 0) {
+                seat = neighbors[Math.floor(Math.random() * neighbors.length)];
+                console.log(`👥 10回目: メンバー${member}が6回目の隣席${seat}に決定！`);
+            }
+        }
+
+        if (seat === null) {
+            const wishedOptions = priorityWishes[10] || [];
+            seat = chooseSeatByProbability(wishedOptions);
+            if (seat !== null) {
+                console.log(`⭐️ 10回目: メンバー${member}が希望席${seat}に当選（隣席NG時）`);
             }
         }
     }
 
+    // 通常席ランダム
     if (seat === null) {
         seat = getRandomSeat();
         console.log(`🎲 ${drawCount}回目: メンバー${member}がランダム席${seat}に決定`);
@@ -81,11 +105,10 @@ function drawNextMember() {
     usedSeats.push(seat);
     seatAssignments[member] = seat;
 
-    // 6回目の席が決まらなければここで記録
     if (drawCount === 6 && sixthSeat === null) {
         sixthSeat = seat;
     }
 
-    document.getElementById("resultText").innerText = `${drawCount}回目:${seat}`;
+    document.getElementById("resultText").innerText = `${drawCount}回目: メンバー${member} → 席${seat}`;
     return { member, seat };
 }
