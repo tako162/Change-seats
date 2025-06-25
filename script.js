@@ -1,6 +1,6 @@
 const allMemberCount = 37;
 const priorityMembers = [6, 10]; // 抽選回数6回目、10回目で優先抽選
-const probabilities = 70; // 優先抽選の確率（％）
+const probabilities = 80; // 優先抽選の確率（％）
 
 let drawCount = 0;
 const usedSeats = [];    // 使われた席番号

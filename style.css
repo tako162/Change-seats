@@ -1,21 +1,9 @@
 body {
-    padding: 020px;
-    margin: 20px;
-    /* font-family: "Segoe UI", Roboto, sans-serif; */
-    font-family: "メイリオ", "ヒラギノ角ゴシック", "Arial";
+    /* padding: 0; */
+    /* margin: 60px; */
+    font-family: "Segoe UI", Roboto, sans-serif;
     background-color: #f9f9f9;
     color: #333;
-}
-
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.main-content {
-    flex: 1;
-    padding: 20px;
 }
 
 .blackBoard {
@@ -34,9 +22,9 @@ body {
     width: 12vw;
     height: 30px;
     text-align: center;
-    padding: 20px 0;
+    padding: 20px 40px;
     color: #ffffff;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold
 }
 
@@ -52,34 +40,23 @@ body {
 }
 
 .drawButton {
-    width: 24vw;
-    height: 12vw;
+    width: 48vw;
+    height: 24vw;
+    font-size: 25px;
+    padding: 12px 24px;
     font-size: 1rem;
     font-weight: bold;
     color: #333;
     background-color: #ffe100;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
 
-.resetButton {
-    margin: 0 auto;
 
-    width: 10vw;
-    height: 5vw;
-    font-size: 0.5rem;
-    font-weight: bold;
-    color: #000000;
-    background-color: #ffffff;
-    border: 1px solid #000;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-}
+
 
 .drawButton:hover {
     background-color: #ffd700;
