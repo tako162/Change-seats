@@ -17,20 +17,23 @@ body {
     gap: 20px;
 }
 
-#rb {
+.drawButton {
+    width: 24vw;
+    height: 24vw;
+    font-size: 25px;
     padding: 12px 24px;
     font-size: 1rem;
     font-weight: bold;
     color: #333;
     background-color: #ffe100;
     border: none;
-    border-radius: 6px;
+    border-radius: 24vw;
     cursor: pointer;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
 
-#rb:hover {
+.drawButton:hover {
     background-color: #ffd700;
 }
 
