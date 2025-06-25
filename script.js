@@ -8,7 +8,7 @@ const seatAssignments = {}; // { member: seat }
 
 // 希望席（回数ベース）
 const priorityWishes = {
-    6: 15,  // 6回目の希望席
+    6: 25,  // 6回目の希望席
     10: 8   // 10回目の希望席（ただし隣席優先で使わないかも）
 };
 

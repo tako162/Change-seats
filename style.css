@@ -1,9 +1,20 @@
 body {
-    /* padding: 0; */
-    /* margin: 60px; */
+    padding: 0;
+    margin: 20px;
     font-family: "Segoe UI", Roboto, sans-serif;
     background-color: #f9f9f9;
     color: #333;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
 }
 
 .button-wrapper {
@@ -20,8 +31,7 @@ body {
 .drawButton {
     width: 24vw;
     height: 24vw;
-    font-size: 25px;
-    padding: 12px 24px;
+    /* padding: 12px 24px; */
     font-size: 1rem;
     font-weight: bold;
     color: #333;
@@ -33,9 +43,25 @@ body {
     transition: background-color 0.3s ease;
 }
 
+.resetButton {
+    width: 10vw;
+    height: 5vw;
+    /* padding: 12px 24px; */
+    font-size: 0.5rem;
+    font-weight: bold;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
 .drawButton:hover {
     background-color: #ffd700;
 }
+
 
 footer {
     font-size: 10px;
