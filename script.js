@@ -3,15 +3,15 @@ const probabilities = 1000; // 優先抽選の確率（％）
 var memberNames = ["たくも", "ゆい", "みずき", "かりな", "わか", "しゅんすけ", "ひろむ", "かいどう", "しん", "れい", "きさと", "ゆうだい", "きっぺい", "ときわ", "ゆうか", "なる", "ひろたか", "みずは", "そうた", "はると", "こうき", "かなみち", "はやと", "こころ", "おうが", "かおるこ", "こうせい", "りん", "ゆき", "あやの", "ちさき", "たくと", "あすか", "めい", "れな", "ひかる", "こういちろう"];
 
 let drawCount = 0;
-const usedSeats = [];    // 使われた席番号
-const seatAssignments = {}; // { member: seat }
+const usedSeats = [];
+const seatAssignments = {};
 
 const priorityWishes = {
-    7: [25, 19, 29, 35, 23, 31, 7, 16],  // 6回目の希望席（複数）
-    11: [31, 13, 25, 23]// 10回目の希望席（使われるのは隣席が空いていない場合）
+    7: [25, 19, 29, 35, 23, 31, 7, 16],
+    11: [31, 13, 25, 23]
 };
 
-let sixthSeat = null; // 6回目の席を記録
+let sixthSeat = null;
 
 function isUsedSeat(seat) {
     return usedSeats.includes(seat);
@@ -52,10 +52,8 @@ function drawNextMember() {
 
     drawCount++;
     const member = drawCount;
-
     let seat = null;
 
-    // 7回目：複数希望席のうち空いているものから優先
     if (drawCount === 7 && Math.random() * 100 < probabilities) {
         const wishedSeats = priorityWishes[7] || [];
         const availableWished = wishedSeats.filter(seat => !isUsedSeat(seat));
@@ -64,10 +62,7 @@ function drawNextMember() {
             sixthSeat = seat;
             console.log(`🎯 7回目: メンバー${member}が希望席${seat}に当選！`);
         }
-    }
-
-    // 11回目：6回目の横の空席が優先
-    else if (drawCount === 11 && Math.random() * 100 < probabilities) {
+    } else if (drawCount === 11 && Math.random() * 100 < probabilities) {
         if (sixthSeat !== null) {
             const neighbors = getHorizontalNeighbors(sixthSeat);
             if (neighbors.length > 0) {
@@ -76,7 +71,6 @@ function drawNextMember() {
             }
         }
 
-        // 横が全部埋まっていたら希望席候補を試す
         if (seat === null) {
             const wishedSeats = priorityWishes[11] || [];
             const availableWished = wishedSeats.filter(seat => !isUsedSeat(seat));
@@ -87,7 +81,6 @@ function drawNextMember() {
         }
     }
 
-    // 通常抽選
     if (seat === null) {
         seat = getRandomSeat();
         console.log(`🎲 ${drawCount}回目: メンバー${member}がランダム席${seat}に決定`);
@@ -100,15 +93,71 @@ function drawNextMember() {
         sixthSeat = seat;
     }
 
-
-
     document.getElementsByClassName("div" + seat)[0].innerText = `${memberNames[member - 1]}`;
-    // document.getElementById("resultText").innerText = `${drawCount}回目:${seat}`;
-    // document.getElementById("resultText").innerText = `${drawCount}回目: メンバー${member} → 席${seat}`;
 
     frontMode.checked = false;
 
     return { member, seat };
+}
+
+function drawNextMemberWithRandomHighlight(callback) {
+    if (drawCount >= allMemberCount) {
+        console.log("全員抽選済みです！");
+        if (callback) callback();
+        return;
+    }
+
+    const flashCountPerSeat = 1;
+    const flashDelay = 25;
+
+    const availableSeats = Array.from({ length: allMemberCount }, (_, i) => i + 1)
+        .filter(seat => !isUsedSeat(seat));
+
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    const shuffledSeats = shuffle(availableSeats);
+
+    let seatIndex = 0;
+    let flashCycle = 0;
+    let isHighlightOn = false;
+
+    function highlightNextSeat() {
+        if (seatIndex >= shuffledSeats.length) {
+            const result = drawNextMember();
+            const target = document.querySelector(`.div${result.seat}`);
+            if (target) {
+                target.style.backgroundColor = '#bfa06a';
+            }
+            if (callback) callback();
+            return;
+        }
+
+        const seatNumber = shuffledSeats[seatIndex];
+        const currentSeat = document.querySelector(`.div${seatNumber}`);
+
+        if (isHighlightOn) {
+            if (currentSeat) currentSeat.style.backgroundColor = '#bfa06a';
+            isHighlightOn = false;
+            flashCycle++;
+            if (flashCycle >= flashCountPerSeat) {
+                seatIndex++;
+                flashCycle = 0;
+            }
+        } else {
+            if (currentSeat) currentSeat.style.backgroundColor = '#ffc96b';
+            isHighlightOn = true;
+        }
+
+        setTimeout(highlightNextSeat, flashDelay);
+    }
+
+    highlightNextSeat();
 }
 
 function drawAllMembers() {

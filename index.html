@@ -3,19 +3,21 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="席替え">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="favicon.ico" sizes="180x180">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="席替え" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="favicon.ico" sizes="180x180" />
     <title>席替え</title>
+
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="grid.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet" />
 </head>
 
 <body>
@@ -24,7 +26,10 @@
             <div class="blackBoard">
                 <div class="board">黒板</div>
             </div>
+
             <div class="parent">
+                <!-- 37席分の空divを一括で記述 -->
+                <!-- 必要であればJavaScriptやテンプレートで生成する方法も検討可能 -->
                 <div class="div1"></div>
                 <div class="div2"></div>
                 <div class="div3"></div>
@@ -63,24 +68,24 @@
                 <div class="div36"></div>
                 <div class="div37"></div>
             </div>
-            <!-- <p style="text-align: center; font-size:25px" id="resultText">結果</p> -->
+
             <div class="button-wrapper">
-                <button class="drawButton" type="button" onclick="drawNextMember()">
-                    <p>シャッフル</p>
-                </button>
+                <button class="drawButton" type="button" onclick="drawNextMemberWithRandomHighlight()">シャッフル</button>
             </div>
+
             <div class="controls">
-                <input class="frontModeInput" style="display:none" type="checkbox" name="namae" value="atai"
-                    id="frontMode">
-                <label class="frontModeLabel" for="frontMode">前2列モード</label>
+                <input type="checkbox" id="frontMode" class="frontModeInput" style="display:none" name="name" />
+                <label for="frontMode" class="frontModeLabel">前2列モード</label>
                 <button class="simultaneousVotingButton" type="button" onclick="drawAllMembers()">一斉投票</button>
                 <button class="resetButton" type="button" onclick="window.location.reload(false)">リセット</button>
             </div>
         </div>
     </div>
+
     <footer>
-        <p>Ver 1.0.0</p>
+        <p>Ver. 2.0.0</p>
     </footer>
+
     <script src="script.js"></script>
 </body>
 
