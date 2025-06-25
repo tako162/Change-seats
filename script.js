@@ -100,10 +100,19 @@ function drawNextMember() {
         sixthSeat = seat;
     }
 
+
+
     document.getElementsByClassName("div" + seat)[0].innerText = `${memberNames[member - 1]}`;
-    document.getElementById("resultText").innerText = `${drawCount}回目:${seat}`;
+    // document.getElementById("resultText").innerText = `${drawCount}回目:${seat}`;
+    // document.getElementById("resultText").innerText = `${drawCount}回目: メンバー${member} → 席${seat}`;
 
-    document.getElementById("resultText").innerText = `${drawCount}回目: メンバー${member} → 席${seat}`;
+    frontMode.checked = false;
+
     return { member, seat };
+}
 
+function drawAllMembers() {
+    while (drawCount < allMemberCount) {
+        drawNextMember();
+    }
 }
