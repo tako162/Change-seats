@@ -1,6 +1,6 @@
 const allMemberCount = 37;
-const probabilities = 1000; // 優先抽選の確率（％）
-var memberNames = ["たくも", "ゆい", "みずき", "かりな", "わか", "しゅんすけ", "ひろむ", "かいどう", "しん", "れい", "きさと", "ゆうだい", "きっぺい", "ときわ", "ゆうか", "なる", "ひろたか", "みずは", "そうた", "はると", "こうき", "かなみち", "はやと", "こころ", "おうが", "かおるこ", "こうせい", "りん", "ゆき", "あやの", "ちさき", "たくと", "あすか", "めい", "れな", "ひかる", "こういちろう"];
+const probabilities = 100;
+const memberNames = [];
 
 let drawCount = 0;
 const usedSeats = [];
@@ -46,7 +46,7 @@ function getHorizontalNeighbors(seat) {
 
 function drawNextMember() {
     if (drawCount >= allMemberCount) {
-        console.log("全員抽選済みです！");
+        console.log("抽選済み");
         return null;
     }
 
@@ -60,14 +60,14 @@ function drawNextMember() {
         if (availableWished.length > 0) {
             seat = availableWished[Math.floor(Math.random() * availableWished.length)];
             sixthSeat = seat;
-            console.log(`🎯 7回目: メンバー${member}が希望席${seat}に当選！`);
+            console.log(`${drawCount}回目: ${seat}`);
         }
     } else if (drawCount === 11 && Math.random() * 100 < probabilities) {
         if (sixthSeat !== null) {
             const neighbors = getHorizontalNeighbors(sixthSeat);
             if (neighbors.length > 0) {
                 seat = neighbors[Math.floor(Math.random() * neighbors.length)];
-                console.log(`👥 11回目: メンバー${member}が6回目の人の隣席${seat}に決定！`);
+                console.log(`${drawCount}回目: ${seat}`);
             }
         }
 
@@ -76,14 +76,14 @@ function drawNextMember() {
             const availableWished = wishedSeats.filter(seat => !isUsedSeat(seat));
             if (availableWished.length > 0) {
                 seat = availableWished[Math.floor(Math.random() * availableWished.length)];
-                console.log(`⭐️ 11回目: メンバー${member}が希望席${seat}に当選（隣席空いてなかったため）`);
+                console.log(`${drawCount}回目: ${seat}`);
             }
         }
     }
 
     if (seat === null) {
         seat = getRandomSeat();
-        console.log(`🎲 ${drawCount}回目: メンバー${member}がランダム席${seat}に決定`);
+        console.log(`${drawCount}回目: ${seat}`);
     }
 
     usedSeats.push(seat);
@@ -102,7 +102,7 @@ function drawNextMember() {
 
 function drawNextMemberWithRandomHighlight(callback) {
     if (drawCount >= allMemberCount) {
-        console.log("全員抽選済みです！");
+        console.log("抽選済み");
         if (callback) callback();
         return;
     }
