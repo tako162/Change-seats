@@ -164,3 +164,10 @@ function drawAllMembers() {
         drawNextMember();
     }
 }
+
+function addSeatTest() {
+    var seats = document.getElementsByClassName("parent")[0];
+    for (let i = 0; i < allMemberCount; i++) {
+        seats.insertAdjacentHTML("beforeend", "")
+    }
+}
