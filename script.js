@@ -7,8 +7,7 @@ const usedSeats = [];
 const seatAssignments = {};
 
 const priorityWishes = {
-    7: [25, 19, 29, 35, 23, 31, 7, 16],
-    11: [31, 13, 25, 23]
+    //drawCount: [seat,seat]
 };
 
 let sixthSeat = null;
