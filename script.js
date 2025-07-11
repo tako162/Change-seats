@@ -167,7 +167,7 @@ function drawAllMembers() {
 
 function addSeatTest() {
     var seats = document.getElementsByClassName("parent")[0];
-    for (let i = 0; i < allMemberCount; i++) {
-        seats.insertAdjacentHTML("beforeend", `<div${i}></div>`)
+    for (let i = 1; i < allMemberCount + 1; i++) {
+        seats.insertAdjacentHTML("beforeend", `<div class="div${i}">`)
     }
 }
