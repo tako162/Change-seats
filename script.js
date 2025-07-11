@@ -165,9 +165,9 @@ function drawAllMembers() {
     }
 }
 
-function addSeatTest() {
+function addSeat(count) {
     var seats = document.getElementsByClassName("parent")[0];
-    for (let i = 1; i < allMemberCount + 1; i++) {
+    for (let i = 1; i < count + 1; i++) {
         seats.insertAdjacentHTML("beforeend", `<div class="div${i}">`)
     }
 }
