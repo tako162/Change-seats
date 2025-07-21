@@ -171,3 +171,5 @@ function addSeat(count) {
         seats.insertAdjacentHTML("beforeend", `<div class="div${i}">`)
     }
 }
+
+addSeat(allMemberCount);
