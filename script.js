@@ -1,7 +1,7 @@
 const memberNames = [];
 //TEST
 // const allMemberCount = memberNames.length;
-const allMemberCount = 27;
+const allMemberCount = 37;
 //TEST END
 
 const usedSeatNombers = [];
