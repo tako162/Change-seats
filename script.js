@@ -20,9 +20,4 @@ function addSeat(count) {
         seats.insertAdjacentHTML("beforeend", `<div id="seat${i}" class="div${i}">`);
     }
 }
-window.onloar
 addSeat(allMemberCount);
-
-
-
-
