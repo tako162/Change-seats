@@ -1,6 +1,9 @@
 const memberNames = [];
+//TEST
 // const allMemberCount = memberNames.length;
-const allMemberCount = 27;//devTEST
+const allMemberCount = 27;
+//TEST END
+
 const usedSeatNombers = [];
 let drawCount = 0;
 
@@ -17,7 +20,9 @@ function addSeat(count) {
         seats.insertAdjacentHTML("beforeend", `<div id="seat${i}" class="div${i}">`);
     }
 }
+window.onloar
 addSeat(allMemberCount);
+
 
 
 
