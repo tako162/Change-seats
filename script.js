@@ -14,9 +14,10 @@ function draw() {
 function addSeat(count) {
     var seats = document.getElementsByClassName("parent")[0];
     for (let i = 1; i < count + 1; i++) {
-        seats.insertAdjacentHTML("beforeend", `<div id="seat${i}" class="div${i}">`)
+        seats.insertAdjacentHTML("beforeend", `<div id="seat${i}" class="div${i}">`);
     }
 }
 addSeat(allMemberCount);
+
 
 
