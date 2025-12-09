@@ -1,5 +1,6 @@
 const memberNames = [];
-const allMemberCount = memberNames.length;
+// const allMemberCount = memberNames.length;
+const allMemberCount = 27;//devTEST
 const usedSeatNombers = [];
 let drawCount = 0;
 
@@ -17,4 +18,5 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
