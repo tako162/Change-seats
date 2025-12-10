@@ -7,7 +7,7 @@ let usedSeats = [];
 let drawCount = 0;
 
 
-function draw() {
+function  draw() {
 drawCount++;
 let random;
     do {
@@ -18,8 +18,8 @@ let random;
     document.getElementsByClassName("div0")[0].innerText = `AAA`;
 }
 
-function isUsedSeat(ransom){
-   return usedSeats.includes(ransom);
+function isUsedSeat(random){
+   return usedSeats.includes(random);
 }
 
 //座席を生成(CSS未連携)
@@ -30,6 +30,7 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
 
 
