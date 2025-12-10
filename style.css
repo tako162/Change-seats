@@ -38,6 +38,11 @@ body {
     font-weight: bold;
 }
 
+.parent{
+    margin:25px auto 25px;     
+    width:300px;  
+}
+
 .button-wrapper {
     text-align: center;
 }
@@ -108,4 +113,5 @@ footer {
     background-color: #c3c3c3;
     color: #222;
     padding: 15px;
+
 }
