@@ -28,9 +28,9 @@ body {
 
 .board {
     background-color: #007c11;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 12vw;
-    height: 30px;
+    height: 10vw;
     text-align: center;
     padding: 20px 40px;
     color: #fff;
@@ -108,4 +108,5 @@ footer {
     background-color: #c3c3c3;
     color: #222;
     padding: 15px;
+
 }
