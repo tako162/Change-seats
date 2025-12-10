@@ -17,7 +17,7 @@ body {
 }
 
 .blackBoard {
-    margin: 25px auto 25px;
+    margin: 10px auto 10px;
     background-color: #007c11;
     border-radius: 5px;
     width: 12vw;
@@ -34,8 +34,8 @@ body {
 }
 
 .drawButton {
-    width: 48vw;
-    height: 24vw;
+    width: 24vw;
+    height: 30px;
     padding: 12px 24px;
     font-size: 1rem;
     font-weight: bold;
@@ -49,7 +49,7 @@ body {
 }
 
 .drawButton:hover {
-    background-color: #ffd700;
+    background-color: #ffdA00;
 }
 
 .resetButton,
@@ -101,7 +101,3 @@ footer {
     padding: 15px;
 
 }
-
-
-
-
