@@ -15,8 +15,7 @@ function draw() {
     usedSearts.push(seat);
     document.getElementsByClassName(`div${random}`)[0].innerText = `${drawCount}/${random}`;
     console.log(`seat${random}`);
-    }while(isUsedSeats(seat);
-    
+    }while(isUsedSeats(seat));
 }
 
 function isUsedSeat(seat){
@@ -31,6 +30,7 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
 
 
