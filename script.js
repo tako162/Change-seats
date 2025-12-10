@@ -19,7 +19,7 @@ function draw() {
 }
 
 function isUsedSeats(num){
-   return usedSears.includes(num);
+   return usedSeats.includes(num);
 }
 
 //座席を生成(CSS未連携)
@@ -30,3 +30,4 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
