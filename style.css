@@ -39,8 +39,8 @@ body {
 }
 
 .parent{
-    margin:25px auto 25px;     
-    width:300px;  
+    margin: 25px auto 25px;     
+    width: 300px;
 }
 
 .button-wrapper {
@@ -115,4 +115,5 @@ footer {
     padding: 15px;
 
 }
+
 
