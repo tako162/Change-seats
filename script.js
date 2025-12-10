@@ -10,7 +10,7 @@ function draw() {
     drawCount++;
     var random = Math.floor(Math.random() * allMemberCount + 1); 
     var seat = document.getElementById(`seat${random}`);
-    sear.innerText = `seat${random}`;
+    console.log(`seat${random}`);;
 }
 
 //座席を生成(CSS未連携)
@@ -21,5 +21,6 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
 
