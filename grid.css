@@ -1,5 +1,6 @@
 .parent {
-    margin: 30px;
+    margin: 25px auto 25px;     
+    width: 300px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(7, 1fr);
@@ -24,4 +25,5 @@
     color: #3a2c14;
     font-weight: 600;
     user-select: none;
+
 }
