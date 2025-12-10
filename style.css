@@ -17,16 +17,7 @@ body {
 }
 
 .blackBoard {
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    gap: 5px;
-    justify-items: center;
-    text-align: center;
-}
-
-.board {
+    margin: 25px auto 25px;
     background-color: #007c11;
     border-radius: 5px;
     width: 12vw;
@@ -110,6 +101,7 @@ footer {
     padding: 15px;
 
 }
+
 
 
 
