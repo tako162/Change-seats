@@ -13,12 +13,12 @@ let seat;
     do {
         seat = Math.floor(Math.random() * allMemberCount) + 1;
         }
-    } while (isUsedSeat(seat));
-    return seat;
+    } while(isUsedSeat(seat));
+return seat;
 }
 
-function isUsedSeats(num){
-   return usedSeats.includes(num);
+function isUsedSeat(seat){
+   return usedSeats.includes(seat);
 }
 
 //座席を生成(CSS未連携)
@@ -29,6 +29,7 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
 
 
