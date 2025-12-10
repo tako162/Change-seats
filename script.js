@@ -1,6 +1,6 @@
 const allMemberCount = 37;
 const probabilities = 100;
-const memberNames = [];
+var memberNames = ["たくも", "ゆい", "みずき", "かりな", "わか", "しゅんすけ", "ひろむ", "かいどう", "しん", "れい", "きさと", "ゆうだい", "きっぺい", "ときわ", "ゆうか", "なる", "ひろたか", "みずは", "そうた", "はると", "こうき", "かなみち", "はやと", "こころ", "おうが", "かおるこ", "こうせい", "りん", "ゆき", "あやの", "ちさき", "たくと", "あすか", "めい", "れな", "ひかる", "こういちろう"];
 
 let drawCount = 0;
 const usedSeats = [];
@@ -170,6 +170,7 @@ function addSeat(count) {
     for (let i = 1; i < count + 1; i++) {
         seats.insertAdjacentHTML("beforeend", `<div class="div${i}">`)
     }
+
 }
 
 addSeat(allMemberCount);
