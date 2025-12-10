@@ -13,7 +13,7 @@ let seat;
     do {
         seat = Math.floor(Math.random() * allMemberCount) + 1;
     }while(isUsedSeat(seat));
-return seat;
+document.getElementsByClassName(`div${seat}`).innerText=`${seat}`;
 }
 
 function isUsedSeat(seat){
@@ -28,6 +28,7 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
 
 
