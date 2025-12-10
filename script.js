@@ -13,7 +13,8 @@ let sear
     do {
         sear = Math.floor(Math.random() * allMemberCount) + 1;
     }while(!isUsedSeat(seat));
-    document.getElementsByClassName(`div${sear}`)[0].innerText=`${drowCount}/${sear}`;
+    document.getElementsByClassName(`div${sear}`)[0].innerText = `${drowCount}/${sear}`;
+   console.log(seat);
     document.getElementsByClassName("div0")[0].innerText = `AAA`;
 }
 
@@ -29,6 +30,7 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
 
 
