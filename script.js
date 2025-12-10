@@ -9,17 +9,17 @@ let drawCount = 0;
 
 function draw() {
 drawCount++;
-let sear
+let random;
     do {
-        sear = Math.floor(Math.random() * allMemberCount) + 1;
-    }while(!isUsedSeat(seat));
-    document.getElementsByClassName(`div${sear}`)[0].innerText = `${drowCount}/${sear}`;
-   console.log(seat);
+        random = Math.floor(Math.random() * allMemberCount) + 1;
+    }while(!isUsedSeat(ransom));
+    document.getElementsByClassName(`div${ransom}`)[0].innerText = `${drowCount}/${ransom}`;
+   console.log(ransom);
     document.getElementsByClassName("div0")[0].innerText = `AAA`;
 }
 
-function isUsedSeat(seat){
-   return usedSeats.includes(seat);
+function isUsedSeat(ransom){
+   return usedSeats.includes(ransom);
 }
 
 //座席を生成(CSS未連携)
@@ -30,6 +30,7 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
 
 
