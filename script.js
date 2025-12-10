@@ -10,9 +10,11 @@ let drawCount = 0;
 function  draw() {
 drawCount++;
 let random;
-    do {
-        random = Math.floor(Math.random() * allMemberCount) + 1;
-    }while(isUsedSeat(random));
+
+    let random;
+    while(isUsedSeat(random)){
+    random = Math.floor(Math.random() * allMemberCount) + 1;
+    }
     document.getElementsByClassName(`div${random}`)[0].innerText = `AAA`;
 }
 
@@ -28,6 +30,7 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
 
 
