@@ -10,7 +10,7 @@ function draw() {
     drawCount++;
     var random = Math.floor(Math.random() * allMemberCount + 1); 
     var seat = document.getElementById(`seat${random}`);
-    document.getElementsById(`seat${random}`).innerText = `${random}`;
+    document.getElementsByClassName("div" + seat)[0].innerText = `${random}`;;
     console.log(`seat${random}`);;
 }
 
@@ -22,6 +22,7 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
 
 
