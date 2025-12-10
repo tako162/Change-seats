@@ -12,10 +12,8 @@ drawCount++;
 let random;
     do {
         random = Math.floor(Math.random() * allMemberCount) + 1;
-    }while(!isUsedSeat(random));
-    document.getElementsByClassName(`div${random}`)[0].innerText = `${drowCount}/${random}`;
-    console.log(random);
-    document.getElementsByClassName("div0")[0].innerText = `AAA`;
+    }while(isUsedSeat(random));
+    document.getElementsByClassName(`div${random}`)[0].innerText = `AAA`;
 }
 
 function isUsedSeat(random){
@@ -30,6 +28,7 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
 
 
