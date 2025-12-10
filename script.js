@@ -1,16 +1,16 @@
 const memberNames = [];
-//TEST
 // const allMemberCount = memberNames.length;
+//TEST
 const allMemberCount = 37;
 //TEST END
 
 const usedSeatNombers = [];
 let drawCount = 0;
-
 function draw() {
     drawCount++;
     var random = Math.floor(Math.random() * allMemberCount + 1); 
-    var seat = documents.getElementById(`seat${random}`);
+    var seat = document.getElementById(`seat${random}`);
+    sear.innerText = `seat${random}`;
 }
 
 //座席を生成(CSS未連携)
@@ -21,4 +21,5 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
