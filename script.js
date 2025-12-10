@@ -12,8 +12,7 @@ drawCount++;
 let seat;
     do {
         seat = Math.floor(Math.random() * allMemberCount) + 1;
-        }
-    } while(isUsedSeat(seat));
+    }while(isUsedSeat(seat));
 return seat;
 }
 
@@ -29,6 +28,7 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
 
 
