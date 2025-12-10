@@ -17,7 +17,7 @@ body {
 }
 
 .blackBoard {
-    margin: 10px auto 10px;
+    margin: 0px auto 0px;
     background-color: #007c11;
     border-radius: 5px;
     width: 12vw;
@@ -36,16 +36,16 @@ body {
 .drawButton {
     width: 24vw;
     height: 30px;
-    padding: 12px 24px;
+    padding: 20px 40px;
     font-size: 1rem;
     font-weight: bold;
     color: #333;
-    background-color: #ffe100;
+    background-color: #ffea00;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+    transition: background-color 0.5s ease;
 }
 
 .drawButton:hover {
@@ -101,3 +101,4 @@ footer {
     padding: 15px;
 
 }
+
