@@ -38,11 +38,6 @@ body {
     font-weight: bold;
 }
 
-.parent{
-    margin: 25px auto 25px;     
-    width: 300px;
-}
-
 .button-wrapper {
     text-align: center;
 }
@@ -115,5 +110,6 @@ footer {
     padding: 15px;
 
 }
+
 
 
