@@ -18,7 +18,7 @@ function draw() {
     }while(!isUsedSeats(random));
 }
 
-function isUsedSeat(num){
+function isUsedSeats(num){
    return usedSears.includes(num);
 }
 
@@ -30,6 +30,7 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
 
 
