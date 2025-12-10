@@ -3,7 +3,7 @@ const memberNames = [];
 //TEST
 let allMemberCount = 37;
 //TEST END
-let usedSeatsNumbers = [];
+let usedSeats = [];
 let drawCount = 0;
 
 
@@ -12,7 +12,7 @@ function draw() {
     var random = Math.floor(Math.random() * allMemberCount + 1); 
     var seat = document.getElementById(`seat${random}`);
     do{
-    usedSeartNumbers.push(random);
+    usedSearts.push(random);
     document.getElementsByClassName(`div${random}`)[0].innerText = `${drawCount}/${random}`;
     console.log(`seat${random}`);
     }while(!isUsedSeats(random));
@@ -30,6 +30,7 @@ function addSeat(count) {
     }
 }
 addSeat(allMemberCount);
+
 
 
 
