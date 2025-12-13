@@ -6,16 +6,18 @@ let allMemberCount = 37;
 let usedSeats = [];
 let drawCount = 0;
 
-
 function draw() {
     drawCount++;
-    let random;
-    random = Math.floor(Math.random() * allMemberCount) + 1;
-    while (isUsedSeat(random)) {
+    if (drawCount <= allMemberCount) {
+        let random;
         random = Math.floor(Math.random() * allMemberCount) + 1;
+        while (isUsedSeat(random)) {
+            random = Math.floor(Math.random() * allMemberCount) + 1;
+            console.log("重複");
+        }
+        usedSeats.push(random);
+        document.getElementsByClassName(`div${random}`)[0].innerText = `${drawCount}`;
     }
-    usedSeats.push(random);
-    document.getElementsByClassName(`div${random}`)[0].innerText = `AAA`;
 }
 
 function isUsedSeat(random) {
