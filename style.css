@@ -37,7 +37,7 @@ body {
     width: 48vw;
     height: 24vw;
     padding: 20px 40px;
-    font-size: 1rem;
+    font-size: 90%;
     font-weight: bold;
     color: #333;
     border: none;
@@ -101,10 +101,3 @@ footer {
     padding: 15px;
 
 }
-
-
-
-
-
-
-
