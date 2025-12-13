@@ -7,21 +7,19 @@ let usedSeats = [];
 let drawCount = 0;
 
 
-function  draw() {
-drawCount++;
-let random;
-
+function draw() {
+    drawCount++;
     let random;
     random = Math.floor(Math.random() * allMemberCount) + 1;
-    while(isUsedSeat(random)){
-    random = Math.floor(Math.random() * allMemberCount) + 1;
+    while (isUsedSeat(random)) {
+        random = Math.floor(Math.random() * allMemberCount) + 1;
     }
     usedSeats.push(random);
     document.getElementsByClassName(`div${random}`)[0].innerText = `AAA`;
 }
 
-function isUsedSeat(random){
-   return usedSeats.includes(random);
+function isUsedSeat(random) {
+    return usedSeats.includes(random);
 }
 
 //座席を生成(CSS未連携)
