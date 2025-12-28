@@ -94,10 +94,13 @@ body {
 }
 
 footer {
-    font-size: 10px;
+    font-size: 15px;
     text-align: center;
     background-color: #c3c3c3;
     color: #222;
-    padding: 15px;
+    padding: 10px;
+}
 
+footer p {
+    margin: 0px;
 }
